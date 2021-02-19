@@ -59,17 +59,15 @@ deleteBook(target) {
   }
 }
 
+  clearFields(){
 
+    document.querySelector('#author').value = '';
+    document.querySelector('#title').value = '';
+    document.querySelector('#pages').value = '';
+    document.querySelector('#isbn').value = '';
+  }
+}
 
-// Book function
-
-
-
-// UI class: Deal with the UI Tasks
-
-// Sore Class: Handle local storage
-
-// Events: Display the books
 
 document.querySelector('#book-form').addEventListener('submit', 
 function(e){
@@ -103,7 +101,7 @@ function(e){
 
      //Clear Fields
 
-     ui.clearfields();
+     ui.clearFields();
   }
 
   e.preventDefault();
