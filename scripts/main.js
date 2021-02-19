@@ -9,6 +9,55 @@ function Book(author, title, pages, read, isbn) {
   this.isbn = isbn;
 }
 
+class UI {
+  addBookToList(book) {
+
+    const list = document.querySelector('#book-list');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+    
+    <td>${book.author}</td>
+    <td>${book.title}</td>
+    <td>${book.pages}</td>
+    <td>${book.isbn}</td>
+    <td><a href="" class="delete btn btn-danger">X</td>
+    `;
+    list.appendChild(row);
+  }
+
+showAlert(message, className){
+
+  const div = document.createElement('div');
+
+  //Add the className
+
+  div.className = `alert ${className}`;
+
+  div.appendChild(document.createTextNode(message));
+
+  const container = document.querySelector('.container');
+
+  //get Form
+  const form = document.querySelector('#book-form');
+
+//Put alert
+
+    container.insertBefore(div, form)
+
+    //Timeout after 3 seconds
+
+    setTimeout(function(){
+
+      document.querySelector('.alert').remove();
+    }, 3000);
+
+}  
+deleteBook(target) {
+
+  if(target.className === 'delete'){
+    target.parentElement.parentElement.remove();
+  }
+}
 
 
 
@@ -60,6 +109,10 @@ function(e){
   e.preventDefault();
 
 })
-// Event to Add a book 
+
 // event to remove a book
+document.querySelector('#book-list').addEventListener('click',
+function (e) {
+  
+})
 
