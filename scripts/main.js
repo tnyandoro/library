@@ -19,6 +19,7 @@ class UI {
     <td>${book.author}</td>
     <td>${book.title}</td>
     <td>${book.pages}</td>
+    <td>${book.read}</td>
     <td>${book.isbn}</td>
     <td><a href="" class="delete btn btn-danger">X</td>
     `;
@@ -64,6 +65,7 @@ deleteBook(target) {
     document.querySelector('#author').value = '';
     document.querySelector('#title').value = '';
     document.querySelector('#pages').value = '';
+    document.querySelector('#read').value = '';
     document.querySelector('#isbn').value = '';
   }
 }
@@ -76,10 +78,11 @@ function(e){
   const author = document.querySelector('#author').value;
   const title = document.querySelector('#title').value;
   const pages = document.querySelector('#pages').value;
+  const read = document.querySelector('#read').value;
   const isbn = document.querySelector('#isbn').value;
 
   // lets instatiate a book
-  const book = new Book(author, title, pages, isbn);
+  const book = new Book(author, title, pages, read, isbn);
 
   // Instantiate UI
   const ui = new UI();
