@@ -6,18 +6,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book library</title>
   <link rel="stylesheet" href="css/main.css">  
+  <link rel="stylesheet" href="css/bootstrap.css">  
+  <script src="https://kit.fontawesome.com/fddcccfd38.js" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
 </head>
 <body>
   
-  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Welcome to Our Small Library</h1>
-    <p class="lead">This is our small library where you can store books and delete those you nolonger need!.</p>
+  <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 text-center"><i class="fas fa-book text-primary aria-hidden=true"></i> Welcome to <span class="text-warning">Small Library</span></h1>
+    <p class="lead">This is our small library where you can store books and delete those you no longer need!.</p>
+    <form id="form-book">
+      <div class="form-group">       
+        <label for="book-author">Author</label>
+        <input type="text" id="book-author" class="form-control" required/>
+      </div>
+      <div class="form-group">       
+        <label for="book-title">Title</label>
+        <input type="text" id="book-title" class="form-control" required/>
+      </div>
+      <div class="form-group">       
+        <label for="book-pages">Book Pages</label>
+        <input type="number" id="book-pages" class="form-control" required/>
+      </div>
+      <div class="form-group">       
+        <label for="book-isbn">Book ISBN</label>
+        <input type="number" id="book-isbn" class="form-control" required/>
+      </div>
+      <div class="form-check">       
+        <label for="book-read">Book Read</label><br>
+        <input type="checkbox" id="book-read" class="form-check-input">
+      </div><br>
+      <input type="submit" value="Add Book" class="btn btn-primary btn-block">
+    </form>
+    <table class="table table-striped mt-8">
+      <thead>
+        <tr>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Pages</th>
+          <th>ISBN</th>
+          <th>Read</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="book-list"></tbody>
+    </table>
   </div>
 
 
-
+ <script src="scripts/main.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
    <!-- Option 2: Separate Popper and Bootstrap JS -->
