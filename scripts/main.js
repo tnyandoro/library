@@ -44,7 +44,8 @@ class UI {
 
     const container = document.querySelector('.container');
 
-    // get Form
+    // Get Form
+
     const form = document.querySelector('#book-form');
 
     // Put alert
