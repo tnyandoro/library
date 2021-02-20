@@ -14,24 +14,8 @@ class Book {
 // UI Class: Handle the UI Task,add books, add books
 class UI {
   static displayBooks() {
-    const StoredBooks = [
-      {
-        title: 'HTML Basics',
-        author: 'John Terry',
-        isbn: '784654',
-        pages: '365',
-        read: true,
-      },
-      {
-        title: 'JavaScript Basics',
-        author: 'Ivan Kyicv',
-        isbn: '784654',
-        pages: '9887365',
-        read: true,
-      },
-    ];
-
-    const books = StoredBooks;
+    // eslint-disable-next-line no-use-before-define
+    const books = Store.getBooks();
 
     books.forEach((book) => UI.addBookToList(book));
   }
@@ -93,7 +77,7 @@ class Store {
     if (localStorage.getItem('books') === null) {
       books = [];
     } else {
-      books = JSON.parse(localStorage.getItem('book'));
+      books = JSON.parse(localStorage.getItem('books'));
     }
     return books;
   }
@@ -143,6 +127,10 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     // Add book to UI
     UI.addBookToList(book);
 
+    // Add book to the store
+
+    Store.addBook(book);
+
     // Show book successfully added
 
     UI.showAlert('Book added', 'success');
@@ -156,8 +144,12 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 // Event: Remove a book using event propagation
 document.querySelector('#book-list').addEventListener('click', (e) => {
   // eslint-disable-next-line no-console
+  // Remove book from the UI
   UI.deleteBook(e.target);
 
+
+  // Remove book from the local storage
+  Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
   // Show the delete book message
 
   UI.showAlert('Book deleted', 'warning');
