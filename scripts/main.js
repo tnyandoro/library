@@ -28,7 +28,11 @@ class UI {
 
     const books = StoredBooks;
 
-    books.forEach((book) => UI.addBookList(book));
+    books.forEach((book) => UI.addBookToList(book));
+  }
+
+  static addBookToList(book) {
+    const list = document.querySelector('#book-list');
   }
 }
 
