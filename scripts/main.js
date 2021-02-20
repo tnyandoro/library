@@ -60,7 +60,26 @@ class UI {
 // Events : Display Books listen to the event and the call the even to load books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
-// Event: add a Book 
-document.querySelector('#book-form')
+// Event: add a Book
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+  // Prevent actual submit event
+  e.preventDefault();
+
+  // Get form values/ will create var for each
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const isbn = document.querySelector('#isbn').value;
+  const pages = document.querySelector('#pages').value;
+  const read = document.querySelector('#read').value;
+
+  // We need to instantiate a book and pass in the values from the book class because its not static
+  const book = new Book(title, author, isbn, pages, read);
+
+  // eslint-disable-next-line no-console
+  console.log(book);
+
+  // Add book to UI
+  UI.addBookToList(book);
+});
 
 // Event: Remove a book
