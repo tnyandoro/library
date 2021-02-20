@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
 // Book Class for the book
 class Book {
@@ -60,10 +61,17 @@ class UI {
   }
 
   // Show Alert and styling
+
   static showAlert(message, className) {
     const div = document.createElement('div');
     div.className = `alert alert-${className}`;
     div.appendChild(document.createTextNode(message));
+    const container = document.querySelector('.container');
+    const form = document.querySelector('#book-form');
+    container.insertBefore(div, form);
+
+    // Fade message away
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
   }
 
   // Clear fields method
@@ -79,6 +87,35 @@ class UI {
 
 // Store Class: Handles Storage local
 
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('book'));
+    }
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+
+    books.forEach((book, index) => {
+      if (book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
 
 // Events : Display Books listen to the event and the call the even to load books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
@@ -98,16 +135,17 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   // before instatiation a book we need to validate
   if (title === '' || author === '' || isbn === '' || pages === '') {
     // eslint-disable-next-line no-alert
-    alert('Please Complete the form fields');
+    UI.showAlert('Please Complete the form', 'danger');
   } else {
     // We need to instantiate a book and pass in the values from the book class
     const book = new Book(title, author, isbn, pages, read);
 
-    // eslint-disable-next-line no-console
-    console.log(book);
-
     // Add book to UI
     UI.addBookToList(book);
+
+    // Show book successfully added
+
+    UI.showAlert('Book added', 'success');
 
     // Add a clear fields method
 
@@ -119,4 +157,8 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 document.querySelector('#book-list').addEventListener('click', (e) => {
   // eslint-disable-next-line no-console
   UI.deleteBook(e.target);
+
+  // Show the delete book message
+
+  UI.showAlert('Book deleted', 'warning');
 });
