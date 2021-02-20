@@ -1,12 +1,36 @@
+/* eslint-disable max-classes-per-file */
 // Book Class for the book
 class Book {
-  constructor() {
-    
+  constructor(title, author, isbn) {
+    this.title = title;
+    this.author = author;
+    this.isbn = isbn;
   }
 }
 
-// UI Class: Handle the UI Task
+// UI Class: Handle the UI Task,add books, add books
+class UI {
+  static displayBooks() {
+    const StoredBooks = [
+      {
+        title: 'HTML Basics',
+        author: 'John Terry',
+        isbn: '784654',
+        pages: '365',
+      },
+      {
+        title: 'HTML Basics',
+        author: 'John Terry',
+        isbn: '784654',
+        pages: '365',
+      },
+    ];
 
+    const books = StoredBooks;
+
+    books.forEach((book) => UI.addBookList(book));
+  }
+}
 
 // Store Class: Handles Storage local
 
@@ -16,7 +40,6 @@ class Book {
 // Event: add a book
 
 // Event:  Remove a book
-
 
 
 /* eslint-disable max-classes-per-file */
@@ -41,7 +64,7 @@ class Book {
 //     const list = document.querySelector('#book-list');
 //     const row = document.createElement('tr');
 //     row.innerHTML = `
-    
+
 //     <td>${book.author}</td>
 //     <td>${book.title}</td>
 //     <td>${book.pages}</td>
@@ -99,7 +122,7 @@ class Book {
 // // Event Listening
 
 //    document.getElementById('book-form').addEventListener('submit', function (e) {
-     
+
 //     //Lets Get Forms
 
 //     const author = document.getElementById('author').value
@@ -116,7 +139,7 @@ class Book {
 
 //     // Validatition
 //     if (author === '' || title === '' || pages === '' || read === ''|| isbn === '') {
-      
+
 //       // Error Alert
 
 //       ui.showAlert('Please fill in fields', 'error');
