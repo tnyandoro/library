@@ -59,6 +59,15 @@ class UI {
     }
   }
 
+  // Show Alert and styling
+  static showAlert(message, className) {
+    const div = document.createElement('div');
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+  }
+
+  // Clear fields method
+
   static clearFields() {
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
@@ -86,18 +95,24 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const pages = document.querySelector('#pages').value;
   const read = document.querySelector('#read').value;
 
-  // We need to instantiate a book and pass in the values from the book class because its not static
-  const book = new Book(title, author, isbn, pages, read);
+  // before instatiation a book we need to validate
+  if (title === '' || author === '' || isbn === '' || pages === '') {
+    // eslint-disable-next-line no-alert
+    alert('Please Complete the form fields');
+  } else {
+    // We need to instantiate a book and pass in the values from the book class
+    const book = new Book(title, author, isbn, pages, read);
 
-  // eslint-disable-next-line no-console
-  console.log(book);
+    // eslint-disable-next-line no-console
+    console.log(book);
 
-  // Add book to UI
-  UI.addBookToList(book);
+    // Add book to UI
+    UI.addBookToList(book);
 
-  // Add a clear fields method
+    // Add a clear fields method
 
-  UI.clearFields();
+    UI.clearFields();
+  }
 });
 
 // Event: Remove a book using event propagation
