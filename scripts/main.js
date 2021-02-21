@@ -105,10 +105,12 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const author = document.querySelector('#author').value;
   const isbn = document.querySelector('#isbn').value;
   const pages = document.querySelector('#pages').value;
-  const read = document.querySelector('#read').value;
+  let read = document.querySelector('#read').value;
 
   if (read === 'on') {
-
+    read = 'yes';
+  } else {
+    read = 'no';
   }
 
   // before instatiation a book we need to validate
