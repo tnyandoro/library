@@ -1,6 +1,31 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
-// Book Class for the book
+
+
+let myLibrary = [];
+
+const myLibraryStr = localStorage.getItem('myLibrary');
+if (myLibraryStr === null) {
+  myLibrary = [];
+} else {
+  myLibrary = JSON.parse(myLibraryStr);
+}
+
+function addBookToLibrary(book) {
+  myLibrary.push(book);
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function removeBookFromLibrary(isbn) {
+  myLibrary.forEach((book, index) => {
+    if (book.isbn === isbn) {
+      myLibrary.splice(index, 1);
+    }
+  });
+
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
 class Book {
   constructor(title, author, isbn, pages, read) {
     this.title = title;
@@ -15,9 +40,7 @@ class Book {
 class UI {
   static displayBooks() {
     // eslint-disable-next-line no-use-before-define
-    const books = Store.getBooks();
-
-    books.forEach((book) => UI.addBookToList(book));
+    myLibrary.forEach((book) => UI.addBookToList(book));
   }
 
   static addBookToList(book) {
@@ -32,7 +55,7 @@ class UI {
       <td>${book.isbn}</td>
       <td>${book.pages}</td>
       <td>${book.read}</td>
-      <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+      <td><button class="btn btn-danger btn-sm delete" isbn="${book.isbn}">X</button></td>
     `;
 
     list.appendChild(row);
@@ -69,38 +92,6 @@ class UI {
   }
 }
 
-// Store Class: Handles Storage local
-
-class Store {
-  static getBooks() {
-    let books;
-    if (localStorage.getItem('books') === null) {
-      books = [];
-    } else {
-      books = JSON.parse(localStorage.getItem('books'));
-    }
-    return books;
-  }
-
-  static addBook(book) {
-    const books = Store.getBooks();
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-
-  static removeBook(isbn) {
-    const books = Store.getBooks();
-
-    books.forEach((book, index) => {
-      if (book.isbn === isbn) {
-        books.splice(index, 1);
-      }
-    });
-
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-}
-
 // Events : Display Books listen to the event and the call the even to load books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
@@ -116,6 +107,10 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const pages = document.querySelector('#pages').value;
   const read = document.querySelector('#read').value;
 
+  if (read === 'on') {
+
+  }
+
   // before instatiation a book we need to validate
   if (title === '' || author === '' || isbn === '' || pages === '') {
     // eslint-disable-next-line no-alert
@@ -129,7 +124,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     // Add book to the store
 
-    Store.addBook(book);
+    addBookToLibrary(book);
 
     // Show book successfully added
 
@@ -149,7 +144,8 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
 
 
   // Remove book from the local storage
-  Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
+
+  removeBookFromLibrary(e.target.getAttribute('isbn'));
   // Show the delete book message
 
   UI.showAlert('Book deleted', 'warning');
