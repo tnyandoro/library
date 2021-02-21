@@ -27,7 +27,7 @@ A Morden Browser
 👤 **Tendai Nyandoro**
 
 - GitHub: [@Tendai Nyandoro](https://github.com/tnyandoro)
-- Twitter: [@tendai28](https://twitter.com/tendai28)
+- Twitter: [@tendainyandoro](https://twitter.com/tendainyandoro)
 - LinkedIn: [Tendai Nyandoro](https://www.linkedin.com/in/tendai-nyandoro/)
 
 ## 🤝 Contributing
