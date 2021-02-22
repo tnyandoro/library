@@ -16,6 +16,9 @@
 - Bootswatch
 - JavaScript
 
+## Our Project
+
+This project is found on the following Repo [Library](https://github.com/tnyandoro/library/)
 
 ### Prerequisites
 
@@ -34,7 +37,7 @@ A Morden Browser
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/sinework/Library-v1.1/issues/).
+Feel free to check the [issues page](https://github.com/tnyandoro/library/issues).
 
 ## Show your support
 
