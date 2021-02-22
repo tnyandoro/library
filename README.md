@@ -43,7 +43,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - The Bootstrap theme credit goes to [Bootswatch](https://bootswatch.com/)
-- This project was inspired by the [Microverse](https:www.microverse.org) for the capstone program
+- This project was inspired by the [Microverse](https://www.microverse.org/) for the  program
 
 
 ## 📝 License
