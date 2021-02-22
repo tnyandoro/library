@@ -3,6 +3,7 @@
 
 
 let myLibrary = [];
+let a;
 
 const myLibraryStr = localStorage.getItem('myLibrary');
 if (myLibraryStr === null) {
@@ -36,6 +37,16 @@ class Book {
   }
 }
 
+const show = () => {
+  if (a === 1) {
+    document.getElementById('book-form').style.display = 'block';
+    // eslint-disable-next-line no-return-assign
+    return a = 0;
+  }
+  document.getElementById('book-form').style.display = 'none';
+  // eslint-disable-next-line no-return-assign
+  return a = 1;
+};
 // UI Class: Handle the UI Task,add books, add books
 
 class UI {
@@ -67,6 +78,7 @@ class UI {
       el.parentElement.parentElement.remove();
     }
   }
+
 
   // Show Alert and styling
 
