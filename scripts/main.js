@@ -37,13 +37,14 @@ class Book {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 const show = () => {
   if (a === 1) {
-    document.getElementById('book-form').style.display = 'block';
+    document.getElementById('book-form').style.display = 'none';
     // eslint-disable-next-line no-return-assign
     return a = 0;
   }
-  document.getElementById('book-form').style.display = 'none';
+  document.getElementById('book-form').style.display = 'block';
   // eslint-disable-next-line no-return-assign
   return a = 1;
 };
