@@ -37,6 +37,7 @@ class Book {
 }
 
 // UI Class: Handle the UI Task,add books, add books
+
 class UI {
   static displayBooks() {
     // eslint-disable-next-line no-use-before-define
