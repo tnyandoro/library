@@ -6,21 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book library</title>
   <link rel="stylesheet" href="css/main.css">  
-  <link rel="stylesheet" href="css/bootstrap.css">  
+  <!-- <link rel="stylesheet" href="css/bootstrap.css">   -->
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/fddcccfd38.js" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
 </head>
 <body>
   
   <div class="container px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4 text-center"><i class="fas fa-book text-primary aria-hidden=true"></i> Welcome to <span class="text-warning">Small Library</span></h1>
+    <h1 class="display-4 text-center"><i class="fas fa-book text-primary aria-hidden=true"></i> Welcome to <span class="text-primary">Small Library</span></h1>
     <p class="lead">This is our small library where you can store books and delete those you no longer need!.</p>
     <button onclick="show()" id="submit-book" class="btn btn-primary btn-md">Submit a New Book</button><br/>
 
-    <form id="book-form">
+    <form id="book-form" style="display: none;">
       <div class="form-group">       
         <label for="author">Author</label>
         <input type="text" id="author" class="form-control" />
@@ -43,19 +43,22 @@
       </div><br>
       <input type="submit" value="Add Book" class="btn btn-primary btn-block">
     </form>
-    <table class="table table-striped mt-8">
-      <thead>
-        <tr>          
-          <th>Title</th>
-          <th>Author</th>
-          <th>ISBN#</th>
-          <th>Pages</th>
-          <th>Read</th>
-          <th>Delete</th>          
-        </tr>
-      </thead>
-      <tbody id="book-list"></tbody>
-    </table>
+    <br>
+    <div class="table">
+      <table class="table table-striped table-hover table-dark mt-8 table-sm">
+        <thead class="table-primary">
+          <tr>          
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN#</th>
+            <th>Pages</th>
+            <th>Read</th>
+            <th>Delete</th>          
+          </tr>
+        </thead>
+        <tbody id="book-list"></tbody>
+      </table>
+    </div>   
   </div>
 
 

@@ -3,7 +3,6 @@
 
 
 let myLibrary = [];
-let a;
 
 const myLibraryStr = localStorage.getItem('myLibrary');
 if (myLibraryStr === null) {
@@ -39,14 +38,12 @@ class Book {
 
 // eslint-disable-next-line no-unused-vars
 const show = () => {
-  if (a === 1) {
-    document.getElementById('book-form').style.display = 'block';
-    // eslint-disable-next-line no-return-assign
-    return a = 0;
+  const el = document.getElementById('book-form');
+  if (!el.style.display && el.style.display === 'block') {
+    el.style.display = 'none';
+  } else {
+    el.style.display = 'block';
   }
-  document.getElementById('book-form').style.display = 'none';
-  // eslint-disable-next-line no-return-assign
-  return a = 1;
 };
 // UI Class: Handle the UI Task,add books, add books
 
